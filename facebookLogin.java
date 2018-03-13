@@ -36,6 +36,7 @@ public class facebookLogin {
 		WebElement arrow = driver.findElement(By.className("_5lxt"));
 		arrow.click();
 		
+		Thread.sleep(5000);
 		driver.findElement(By.name("Log out")).click();
 		//logOut.click();
 		
