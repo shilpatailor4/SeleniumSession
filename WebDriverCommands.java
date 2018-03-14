@@ -1,45 +1,61 @@
-package firstPackage;
+package newpackage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverCommands {
-	public static void main(String[] args) throws InterruptedException {
-		System.setProperty("webdriver.gecko.driver","D:\\Drivers\\geckodriver.exe");
+	public static void main(String args[]) throws InterruptedException{
+		System.setProperty("webdriver.gecko.driver","/home/shilpatailor/Driver/geckodriver");
 		
+		// Create a new instance of the FireFox driver
 		WebDriver driver = new FirefoxDriver();
 		
+		// Storing the Application Url in the String variable
 		String Url = "http://www.store.demoqa.com";
+		
+		// Lounch the ToolsQA profile
 		driver.get(Url);
+		Thread.sleep(5000);
 		
-		System.out.println("Successfully opened the website http://www.store.demoqa.com");
-		
+		// Storing Title name in the String variable
 		String title = driver.getTitle();
 		
+		// Storing Title length in the Int variable
 		int titleLength = driver.getTitle().length();
 		
-		System.out.println("Title page is : " + title);
-		System.out.println("Title page length is : " + titleLength);
+		// Printing Title & Title length in the Console window
+		System.out.println("Title of the page is : " + title);
+		System.out.println("Title of the pagelength is : " + titleLength);
 		
+		// Storing URL in String variable
 		String actualUrl = driver.getCurrentUrl();
 		
-		if(actualUrl.equals(Url))
-		{
+		if(actualUrl.equals(Url)){
 			System.out.println("Verification Successful - The correct Url is opened.");
-		}else {
-			System.out.println("Verification Failed - An incorrect Url is opened.");
 			
-			System.out.println("Actual url is : " + actualUrl);
-			System.out.println("Expected url is : " + Url);
+		}else{
+			System.out.println("Verification Failed - An incorrect Url is opened.");
+			//In case of Fail, you like to print the actual and expected URL for the record purpose
+			System.out.println("Actual Url is : " + actualUrl);
+			System.out.println("Expected Url is : " + Url);
+			
 		}
 		
+		// Storing Page Source in String variable
 		String pageSource = driver.getPageSource();
-		System.out.println("Total length of the page source is : " + pageSource);
 		
-		Thread.sleep(8000);
+		// Storing Page Source length in Int variable
+		int pageSourceLength = pageSource.length();
+		
+		// Printing length of the Page Source on console
+		System.out.println("Total length of the page source is : " + pageSourceLength);
+		
+		Thread.sleep(5000);
+		
+		//Closing browser
 		driver.close();
 		
-		
+	
 		
 	}
 
