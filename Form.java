@@ -1,9 +1,11 @@
 package newpackage;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class Form {
 	public static void main(String[] args) throws InterruptedException {
@@ -75,9 +77,11 @@ public class Form {
         
         // Selecting CheckBox		
         WebElement option1 = driver.findElement(By.id("vfb-6-0"));
+        WebElement option2 = driver.findElement(By.id("vfb-6-1"));
         
      // This will Toggle the Check box
         option1.click();
+        option2.click();
         
      // Check whether the Check box is toggled on
         
@@ -105,6 +109,31 @@ public class Form {
         	System.out.println("Facebook Persists Checkbox Status is -  "+chkFBPersist.isSelected());
         	
         }
+        
+         Thread.sleep(3000);
+        
+        driver.get("http://demo.guru99.com/test/newtours/register.php");
+        
+         //Page scroll
+	     JavascriptExecutor jse = (JavascriptExecutor)driver;
+	     jse.executeScript("window.scrollBy(0,900)", "");
+        
+        Select drpCountry = new Select(driver.findElement(By.name("country")));
+        drpCountry.selectByVisibleText("ANTARCTICA");
+        Thread.sleep(5000);
+        System.out.println("Successfully selected dropdown value");
+        
+        //Multiple values selected
+        driver.get("http://output.jsbin.com/osebed/2");
+        Select fruits = new Select(driver.findElement(By.id("fruits")));
+		fruits.selectByVisibleText("Banana");
+		fruits.selectByIndex(1);
+		
+		fruits.selectByVisibleText("Apple");
+		System.out.println("Multiple values selected");
+		
+		Thread.sleep(4000);
+		
         
         driver.close();
 	}
